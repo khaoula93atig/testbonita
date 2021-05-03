@@ -1,0 +1,12 @@
+<ul>
+  <li ng-repeat="(artifactType, artifacts) in dependencies">
+    <span class="text-muted">
+        <i class="ui-icon ui-{{artifactType}}s"></i>
+        <translate translate-n="artifacts.length"
+                   translate-plural="{{ artifactType }}s"
+                   class="ImportReport-type">{{ artifactType }}
+        </translate>
+    </span>
+      <strong>{{ joinOnNames(artifacts) }}</strong>
+  </li>
+</ul>

@@ -1,0 +1,181 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title" translate>Help</h3>
+</div>
+<div class="modal-body">
+
+    <uib-tabset class="tabs-left">
+        <uib-tab heading="{{ 'Overview' | translate }}">
+            <p translate>
+                Use the UI Designer to create or edit web artifacts: <b>application pages</b> composing business
+                applications, <b>process forms</b> linked to process instantiation or human
+                tasks execution, as well as <b>application layouts</b>, applied to all pages of a business application.
+            </p>
+            <p translate>Artifact creation:</p>
+            <ul>
+                <li translate>Create an <b>application page</b> directly in the UI Designer</li>
+                <li translate>Start creating a <b>process form</b> in Bonita Studio: from the appropriate pool or
+                    human task, create a contract and launch the UI Designer. It will auto-generate a dedicated form to
+                    edit.
+                </li>
+                <li translate>Start creating an <b>application layout</b> by importing the default layout, available in
+                    the Bonita Portal
+                    resources, and edit it.
+                </li>
+            </ul>
+
+            <p translate>
+                An artifact designed with the UI Designer can be exported to be shared with teammates (import in the UI
+                Designer) or used in business applications (import in Bonita Portal).
+            </p>
+
+            <p translate>
+                There is a set of <b>default widgets</b> for displaying information to and for gathering information
+                from the end users. You can also create
+                <b>custom widgets</b>.
+            </p>
+
+            <p class="CalloutSubscription">
+                <span class="CalloutSubscription--title" translate>Subscription edition</span>
+                <translate>Create a fragment to reuse the same group of widgets with the same behavior in several pages
+                    or forms.
+                </translate>
+            </p>
+
+            <p translate>
+                The UI Designer generates <b>standard html application code, based on AngularJS</b>. Export pages if you
+                want to further customize them in a
+                different favorite web development environment.
+            </p>
+        </uib-tab>
+
+        <uib-tab heading="{{ 'Integration with Bonita platform' | translate }}">
+            <p translate>
+                <b>To use a page in a business application</b>, export it from the UI Designer, import it into Bonita
+                Portal resources, and from the
+                relevant application, add it to the list of pages and to a navigation menu.
+            </p>
+
+            <p translate>
+                <b>To use a form in a process</b>, map it in the studio to the relevant process or human task. It will
+                be automatically packaged in the
+                .bar archive ready to deploy in the portal.</p>
+
+            <p class="CalloutSubscription">
+                <span class="CalloutSubscription--title" translate>Subscription edition</span>
+                <span translate>To update a form during production, export the form from the UI Designer, import it into the relevant process in the portal, and
+                    then map it to the relevant task or process start event.</span>
+            </p>
+
+            <p translate>
+                <b>To use a layout in a business application</b>, export it from the UI Designer, import it into the
+                portal as a resource and map it as the
+                layout of the relevant application.
+            </p>
+        </uib-tab>
+        <uib-tab heading="{{ 'Noteworthy changes' | translate }}" class="shaker">
+            <uib-accordion>
+                <uib-accordion-group is-open="status.bonita710open">
+                    <uib-accordion-heading>
+                        Bonita 7.10 <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.bonita710open, 'glyphicon-chevron-right': !status.bonita710open}"></i>
+                    </uib-accordion-heading>
+                    <dt translate>Know your Business Data Model and retrieve Business Data information is simpler than never </dt>
+                    <p translate>With the new data model section, list your objects and drag&drop them into whiteboard (or create a new variable) to introspect your Business Data Model and simplify the retrieval of data by proposing an advanced wizard to configure it. Use this variable later as any other variable.</p>
+                    <dt translate>Improve collaboration on UID artifacts</dt>
+                    <p translate>With the newer way to store variables and widgets, the diff and merge operations are clearer thanks to a multiline storage.</p>
+
+                    <dt translate>Tabs Container advancement</dt>
+                    <p translate>Customize tab title or add css dynamically, hide or disable tabs according to the conditions are the new capabilities of each tab. Change tab format or build nice side menus thanks to vertical display, read this <a href="https://www.bonitasoft.com/bos_redirect.php?bos_redirect_id=712&bos_redirect_product=bos&bos_redirect_major_version=7.10">how to to learn more about customization.</a></p>
+
+                    <dt translate>Enhancements on table and data table</dt>
+                    <p translate>
+                    If you need to add links, icons, actions or customize styles, now you are able as you can enable html computing into table cells. New stylings properties are available to differentiate lines (zebra-striping), condensate table contents or even border your cells and table.
+                    </p>
+                </uib-accordion-group>
+                <uib-accordion-group  is-open="status.bonita79open" heading="true">
+                    <uib-accordion-heading>
+                        Bonita 7.9 <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.bonita79open, 'glyphicon-chevron-right': !status.bonita79open}"></i>
+                    </uib-accordion-heading>
+                    <dt translate>Easily create forms to edit business variables or documents, or display business variables in read-only
+                    </dt>
+                    <p translate>
+                        This improvement is visible when creating the form from Bonita Studio. It will automatically create new variables in the UI Designer and bind them with the related widgets. For more information, read the <a href="https://www.bonitasoft.com/bos_redirect.php?bos_redirect_id=693&bos_redirect_product=bos&bos_redirect_major_version=7.9">dedicated documentation.</a>
+                    </p>
+                    <dt translate>Use provided UID widgets as a template for a custom widget</dt>
+                    <p translate>
+                        Extend Bonita standard widgets to fulfill the specific needs of your project, using the menu option <b>View</b> in the Properties panel of every standard widget. From there, save as your custom widget and implement the extension you need.
+                    </p>
+                    <dt translate>New embedded AngularJS filter to resolve the lazy references of a business object</dt>
+                    <p translate>
+                        To improve the management of embedded objects with lazy references, create a variable using the | lazyRef filter for the object to retrieve. For more information, read the <a href="https://www.bonitasoft.com/bos_redirect.php?bos_redirect_id=692&bos_redirect_product=bos&bos_redirect_major_version=7.9">dedicated documentation.</a>
+                    </p>
+                    <dt translate>Switch widget</dt>
+                    <p translate>
+                        Directly from the whiteboard or from the widget properties section, switch from your current widget to another one and keep the properties already configured.
+                    </p>
+                    <dt translate>Render a UID page of form in the end-user browser</dt>
+                    <p translate>
+                        Open your preview in a browser tab to set new URL parameters, play with dynamic browser sizing, and to reuse the same URL in another browser for testing purposes.
+                    </p>
+                </uib-accordion-group>
+                <uib-accordion-group is-open="status.bonita78open">
+                    <uib-accordion-heading>
+                        Bonita 7.8 <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.bonita78open, 'glyphicon-chevron-right': !status.bonita78open}"></i>
+                    </uib-accordion-heading>
+                    <dt translate>New modal container to create pop-ins</dt>
+                    <p translate>
+                        Available in the palette, it opens over the content of a page/form/layout. To manage such
+                        containers,
+                        the Button widget gains two actions: "Open modal" and "Close modal".
+                    </p>
+                    <dt translate>Change the type of a UI Designer artifact (page/form)</dt>
+                    <p translate>
+                        From the page or form editors, right by the "Save" button, a click on the arrow displays a new
+                        option
+                        "Convert to...". It has also been added in the "Save as" option to, for example, save a form as
+                        a case
+                        overview page.
+                    </p>
+                    <dt translate>Edit the display name and display description of a page, form, or layout from the
+                        Editor
+                    </dt>
+                    <p translate>
+                        Display name and description are used when the page, form, or layout are imported in the
+                        portal's
+                        Resources page. To edit them, click on the new "Tag" button.
+                    </p>
+                    <dt translate>Summary of the calls to Bonita REST API made in a page, form, or layout</dt>
+                    <p translate>
+                        The same "Tag" button displays a summary of all REST API calls made by the current artifact to
+                        the
+                        Bonita REST API."
+                    </p>
+                </uib-accordion-group>
+                <uib-accordion-group is-open="status.bonita77open">
+                    <uib-accordion-heading>
+                        Bonita 7.7 <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.bonita77open, 'glyphicon-chevron-right': !status.bonita77open}"></i>
+                    </uib-accordion-heading>
+                    <dt translate>Identifier</dt>
+                    <p translate>
+                        Starting with version 7.7.0, the name of a UI artifact becomes its unique identifier, instead of
+                        a
+                        randomized identifier. This will make them easier to find in Bonita repositories.
+                        You may rename existing artifacts so they benefit from this change too.
+                    </p>
+                    <p class="alert alert-warning" translate>
+                        Because of this change, if you receive a fragment, rename it and then share it back, it will be
+                        considered as a new file by the other Bonita Studios or UI Designers.
+                    </p>
+                    <p translate>
+                        For more information, consult the official UI Designer overview documentation.
+                    </p>
+                </uib-accordion-group>
+            </uib-accordion>
+
+
+        </uib-tab>
+    </uib-tabset>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-link" ng-click="$dismiss()" translate>Close</button>
+</div>

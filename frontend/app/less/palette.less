@@ -1,0 +1,255 @@
+.Palette {
+  width: @sidebar-palette-width;
+  transition: width @sidebar-transition;
+  background-color: @color-palette-item-bg;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.Palette--closed {
+  width: @sidebar-palette-section-width;
+}
+
+.Palette-sections {
+  background-color: @color-palette-bg;
+  width: @sidebar-palette-section-width;
+}
+
+.Palette-section {
+  display: block;
+  width: 100%;
+  height: 3.2em;
+  color: @color-palette-section-text;
+  border: none;
+  background-color: @color-palette-section-bg;
+  font-size: 1.5em;
+  vertical-align: middle;
+  border-top: @color-palette-bg 1px solid;
+  line-height: 1;
+}
+
+.Palette-section:focus {
+  outline: @color-palette-section-bg-active 1px dashed;
+  outline-offset: -1px;
+  color: @color-palette-section-bg-active;
+}
+
+.Palette-section:hover {
+  background-color: @color-palette-section-bg-active;
+  color: @color-palette-section-text;
+}
+
+/* increase specificity to override :focus styles */
+.Palette-section.Palette-section--active {
+  background-color: lighten(@color-palette-section-bg-active, 10%);
+  color: @color-palette-section-text;
+}
+
+/**
+ * Palette section model
+ */
+.Palette-section-data {
+  background-color: @color-palette-section-data-bg;
+}
+
+.Palette-section.Palette-section-data--active {
+  background-color: lighten(@color-palette-section-data-bg-active, 10%);
+  color: @color-palette-section-data-text;
+}
+.Palette-section-data:focus{
+  outline: @color-palette-section-data-bg-active 1px dashed;
+  outline-offset: -1px;
+  color: @color-palette-section-data-bg-active;
+}
+.Palette-section-data:hover {
+  background-color: @color-palette-section-data-bg-active;
+  color: @color-palette-section-data-text;
+}
+
+.Palette-widgets {
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-right: 1px solid @color-palette-bg;
+  background: linear-gradient(@color-palette-item-bg 100%,rgba(255, 255, 255, 0)),
+              linear-gradient(rgba(255, 255, 255, 0), @color-palette-item-bg 0%) 0 100%,
+              radial-gradient(farthest-side at 50% 0,fade(@color-palette-bg, 100%), rgba(0, 0, 0, 0)),
+              radial-gradient(farthest-side at 50% 100%,fade(@color-palette-bg, 100%), rgba(0, 0, 0, 0)) 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+  /* Opera doesn't support this in the shorthand */
+  background-attachment: local, local, scroll, scroll;
+
+  transition: width @sidebar-transition, transform @sidebar-transition;
+
+  .Search-input {
+    color: @color-palette-item-text;
+    background: lighten(@color-palette-item-bg, 5%);
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid @color-palette-bg;
+  }
+
+  .Search-input:focus {
+    color: @color-palette-search-active;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @color-palette-search
+  }
+
+  .Search-input::placeholder {
+    color: @color-palette-search;
+  }
+
+  .Search-icon,
+  .Search-clearButton {
+    color: @color-palette-search;
+  }
+
+  .head-data-management {
+    color: @color-palette-item-text;
+    background: lighten(@color-palette-item-bg, 5%);
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid @color-palette-bg;
+  }
+
+  .head-data-management:focus {
+    color: @color-palette-search-active;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @color-palette-search
+  }
+}
+
+// Resize animation 1col <-> 2 col
+.Palette-widgets.ng-enter {
+  transform: translate(-100%, 0);
+}
+
+.Palette-widgets.ng-enter-active {
+  transform: translate(0, 0);
+}
+
+.Palette-widgets.ng-leave {
+  transform: translate(0, 0);
+}
+
+.Palette-widgets.ng-leave-active {
+  transform: translate(-100%, 0);
+}
+
+.PaletteItem {
+  color: @color-palette-item-text;
+  cursor: move;
+  font-size: 14px;
+  width: 50%;
+  margin: 0;
+  min-height: 65px;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  opacity: 1;
+  transition: opacity @transition-duration @sidebar-transition;
+  div {
+    min-height: inherit;
+  }
+  img {
+    margin-top: 10px;
+  }
+
+  &:hover {
+    background: @color-palette-bg;
+  }
+}
+
+//  Alpha animation
+.PaletteItem.ng-leave {
+  opacity: 1;
+  transition: none;
+}
+
+.PaletteItem.ng-leave-active {
+  opacity: 0;
+}
+
+.PaletteItem.ng-enter {
+  opacity: 0;
+}
+
+.PaletteItem.ng-enter-active {
+  opacity: 1;
+}
+
+.PaletteItem:nth-child(2n) {
+  border-right: 0
+}
+
+.PaletteItem-icon {
+  width: 57%;
+  margin: 1em auto 4px;
+
+  svg {
+    width: 100%;
+  }
+}
+
+.PaletteItem-label {
+  font-size: 10px;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 4px 2px 0;
+  margin: 0;
+}
+
+.PaletteItem-label .PaletteItem-data-label {
+  font-size: 14px;
+}
+
+.PaletteItem-data-label{
+  text-align: left;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+}
+
+.PaletteItem-data {
+  font-size: 14px;
+  width: 100%;
+  min-height: 28px;
+}
+
+.Palette-board{
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+  }
+
+  &::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  }
+}
+
+.Head-data-management {
+  .see-details {
+    width: 100%;
+  }
+}
+
+.tree-view-icon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Palette-widgets > .PanelHeader-header >.PanelHeader-title{
+  color: @color-palette-section-text
+}

@@ -1,0 +1,122 @@
+.content-wrapper {
+  position: relative;
+  overflow-x: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+#editor-container {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.Palette--closed + #editor-container {
+  left: @sidebar-palette-section-width;
+}
+
+.workspace {
+  position: relative;
+  flex: 1;
+  overflow: auto;
+}
+
+#editor {
+  overflow: auto;
+  background-color: rgba(239, 241, 245, 0.15);
+  display: block;
+  height: 100%;
+  padding: 0 2em;
+}
+
+.Editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.FileViewer-fileName {
+  display: inline-block;
+  padding-top: 7px;
+  margin-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+.Editor-loadingText {
+  text-align: center;
+  padding: 3em;
+}
+
+.display-widget {
+  cursor: default;
+}
+
+.display-widget > div {
+  display: none;
+}
+
+#select-from {
+  display: grid;
+  grid-template-columns: auto 2fr auto;
+  align-items: center;
+}
+
+#header-switch {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+#reset-btn {
+  justify-self: right;
+}
+
+#widgetsFilterValue{
+  flex: 1;
+  width: 100%;
+}
+
+.switch-widget-img{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.show-properties-btn {
+  margin-left: 5px;
+}
+.show-properties-btn {
+  margin-left: 5px;
+}
+
+.switch-config{
+  min-height: 300px;
+  max-height: 500px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  padding: 5px;
+}
+
+.filter-input {
+  position: relative;
+  padding-left: 15px;
+}
+
+.filter-clearButton {
+  border: none;
+  background: none;
+  padding: 0;
+  position: absolute;
+  right: .7em;
+  top: .7em;
+  line-height: 1;
+}
+
+.checklist-margin,
+.radio-button-margin {
+  margin-bottom: 5px;
+  margin-top: 0;
+}

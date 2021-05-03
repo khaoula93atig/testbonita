@@ -1,0 +1,11 @@
+<button class="btn btn-bonita-primary"
+    id="preview"
+    uib-tooltip="{{ 'Changes need to be saved to enable the preview' | translate }}"
+    tooltip-enable="ctrl.isDisabled"
+    tooltip-placement="bottom"
+    tooltip-popup-delay="300"
+    ng-click="ctrl.openPreview()"
+    ng-disabled="ctrl.isDisabled">
+  <i class="fa fa-play"></i>
+  <span translate>Preview</span>
+</button>

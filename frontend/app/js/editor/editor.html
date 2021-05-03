@@ -1,0 +1,40 @@
+<div class="Editor">
+    <header ui-view="header" confirm-on-exit confirm-data="page"></header>
+
+    <div class="content-wrapper">
+        <!-- Palette -->
+        <div class="Palette"
+             ng-class="{'Palette--closed': isPaletteClosed}"
+             editor-palette
+             on-resize="resizePaletteHandler(isClosed)">
+        </div>
+
+        <div id="editor-container" ng-class="{'': !sectionOpened}">
+            <h4 ng-if="!page" class="Editor-loadingText" translate>Loading {{mode}}...</h4>
+            <div class="workspace">
+                <container ng-if="page"  container="page" editor="editor" id="editor" ng-click="editor.selectComponent(null, $event)"
+                           component-highlighter="component-element--hover" data-is-editor-container="true" bo-dropzone
+                           bo-drop-success="appendComponent($event, $data)"></container>
+                <div class="alert alert-editor-hint" ng-if="page.rows.length === 1 && page.rows[0].length === 0">
+                    <i class="fa fa-rotate-90 fa-share"></i>
+                    <h4 class="hint-title" translate>This page is empty.</h4>
+                    <translate>
+                        To add content, drag and drop components from the palette to the whiteboard above.
+                    </translate>
+                </div>
+            </div>
+
+            <bottom-panel mode="{{ mode }}"></bottom-panel>
+        </div>
+
+        <div class="PropertyPanel"
+             ng-class="{'PropertyPanel--closed': isPropertyPanelClosed}"
+             resizable r-directions="['left']">
+            <button title="{{'Toggle properties panel' | translate}}"
+                    class="PropertyPanel-toggle"
+                    ng-click="editor.togglePropertyPanel()">
+            </button>
+            <div class="PropertyPanel-popover" ng-include="'js/editor/properties-panel/properties-panel.html'"></div>
+        </div>
+    </div>
+</div>

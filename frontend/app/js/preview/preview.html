@@ -1,0 +1,30 @@
+<div class="Preview">
+
+    <nav class="navbar Preview-header" role="navigation">
+        <div class="navbar-header">
+            <navbar-toggle on-click="isNavCollapsed = !isNavCollapsed"></navbar-toggle>
+            <span class="navbar-brand" translate>Preview - {{pageName}}</span>
+        </div>
+        <div class="container-fluid">
+            <form class="nav navbar-form navbar-right collapse navbar-collapse" uib-collapse="isNavCollapsed">
+                <app-selector on-change="refreshIframe()"></app-selector>
+                <language-picker on-change="refreshIframe()"></language-picker>
+                <resolutions-bar
+                    on-change="updateResolutionInUrl"
+                    id="resolutions"
+                    class="btn-group Preview-resolutionBar">
+                </resolutions-bar>
+                    <button class="btn btn-bonita-default"
+                       uib-tooltip="{{ 'Expand Preview in new window' | translate }}"
+                       tooltip-placement="bottom"
+                       tooltip-append-to-body="true"
+                            ng-click="openExpandedPreviewWindow()"
+                       >
+                        <i class="fa fa-lg fa-external-link"></i>
+                    </button>
+            </form>
+        </div>
+    </nav>
+
+    <iframe preview-localized-iframe class="Preview-viewport" ng-src="{{iframe.src}}" width="{{iframeWidth()}}" ></iframe>
+</div>

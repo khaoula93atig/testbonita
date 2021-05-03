@@ -1,0 +1,36 @@
+<form name="dataManagement" role="form" novalidate ng-submit="ctrl.save()" autocomplete="off">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" translate>Create new Business Data variable to handle  "{{ctrl.businessData.name}}"</h3>
+    </div>
+    <div class="modal-body">
+        <div class="variable-area">
+            <div class="variable-name form-group"
+                 ng-class="{'has-error': !ctrl.isDataNameUnique(ctrl.newData.$$name)}">
+                <label class="control-label control-label--required" for="name">
+                    <span translate>Variable name</span>
+                    <span ng-show="!ctrl.isDataNameUnique(ctrl.newData.$$name)" translate> '{{ctrl.newData.$$name}}' already exists</span>
+                </label>
+                <input type="text" class="form-control" autofocus placeholder="{{'Name' | translate}}" id="name"
+                       ng-model="ctrl.newData.$$name" ng-trim="false" ng-pattern="/^[a-zA-Z][\w]*$/" required
+                       autocomplete="off">
+
+                <p class="text-danger" ng-show="dataManagement.name.$dirty && dataManagement.name.$error.pattern" translate>
+                    Variable names
+                    must start with a letter and contain only alphanumeric characters</p>
+            </div>
+        </div>
+        <div ng-include="'js/editor/bottom-panel/data-panel/query-selector.html'"></div>
+        <div class="modal-footer">
+            <button type="button"
+                    class="btn btn-primary"
+                    ng-disabled="(!ctrl.isDataNameUnique(ctrl.newData.$$name) || !ctrl.canBeSaved())"
+                    ng-click="ctrl.save()"
+                    translate>Save
+            </button>
+            <button class="btn btn-link EditAssetPopUp-dismissBtn" type="button" ng-click="ctrl.cancel()">
+                <span class="u-fadeIn" translate>Cancel</span>
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,139 @@
+.EditorHeader {
+  display: flex;
+  align-items: center;
+
+  height: @nav-bar-height;
+  min-width: @screen-sm-max;
+
+  background-color: @color-editor-header-bg;
+  color: @color-editor-header-text;
+}
+
+.EditorHeader-menu {
+  flex: 1;
+  align-self: stretch;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  > * {
+    flex-shrink: 0;
+  }
+}
+
+.EditorHeader-navBtn {
+  align-self: stretch;
+
+  width: 50px;
+
+  display:flex;
+  align-items:center;
+  justify-content: center;
+
+  color: inherit;
+  cursor: pointer;
+
+  &:hover{
+    background: lighten(@color-editor-header-back-bg, 5%);
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.EditorHeader-homeNav {
+  font-size: 2em;
+  width: 56px;
+}
+
+.EditorHeader-back {
+  background-color: @color-palette-bg;
+}
+
+.EditorHeader-brand {
+  padding: .5rem;
+  font-weight: 400;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+
+.EditorHeader-form {
+  margin: 1em;
+
+  .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+  }
+}
+
+.EditorHeader-saveIndicator {
+  margin-left: 1rem;
+}
+
+.EditorHeader-name {
+  border-color: #404853;
+  border-width: 2px;
+  box-shadow: none;
+  text-align: center;
+
+  &::-webkit-input-placeholder {
+    color: @color-editor-header-placeholder;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: @color-editor-header-placeholder;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+    color: @color-editor-header-placeholder;
+  }
+
+  &:-ms-input-placeholder {
+    color: @color-editor-header-placeholder;
+  }
+}
+
+.EditorHeader-help {
+  padding: 0 1.5em;
+}
+
+.EditorHeader-exportForm {
+
+  .form-group {
+    margin-bottom: 30px;
+
+    .radio {
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    .checkbox {
+      margin-left: 2rem;
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+  }
+}
+
+.BusinessDataStatus-offline {
+  margin-right: 10px;
+  cursor: default;
+  white-space: nowrap;
+  padding: 5px;
+
+  .status {
+    font-size: 1.5em;
+  }
+
+  .decorator {
+    margin-left: -7px;
+    margin-top: 30px;
+    position: absolute;
+
+    &.warning {
+      color: orange;
+    }
+  }
+}

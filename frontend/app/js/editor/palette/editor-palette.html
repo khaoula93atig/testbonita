@@ -1,0 +1,67 @@
+<section class="Palette-sections">
+    <button class="Palette-section"
+            ng-class="{'Palette-section--active': palette.isActiveSection(section),
+                       'Palette-section-data': palette.isDataSection(section),
+                       'Palette-section-data--active':  palette.isActiveSection(section) && palette.isDataSection(section),
+                       }"
+            ng-repeat="section in palette.sections track by $index | orderBy:'order'"
+            ng-click="palette.toggleSection(section)"
+            aria-label="{{section.name | translate}}"
+            uib-tooltip="{{section.name | translate}}"
+            tooltip-placement="right"
+            tooltip-popup-delay="500"
+            tooltip-append-to-body="true">
+        <i class="ui-icon" ng-class="palette.getIconClassName(section)"></i>
+    </button>
+</section>
+
+<div class="Palette-widgets"
+     ng-if="palette.currentSection !== undefined">
+    <div class="PanelHeader-header">
+        <button class="btn btn-xs btn-bonita-help-widget PanelHeader-help-btn"
+                ng-if="palette.isDataSection(palette.currentSection)"
+                ng-click="palette.openHelp()"
+                type="button">
+            <i class="fa fa-question-circle"></i>
+        </button>
+        <div id="action" class="btn-group PanelHeader-data-model-btn">
+            <button class="btn-group btn btn-xs btn-bonita-action-widget"
+                    ng-if="palette.isDataSection(palette.currentSection)"
+                    uib-tooltip="{{ 'Explore Data Model in new window' | translate }}"
+                    tooltip-placement="right"
+                    tooltip-append-to-body="true"
+                    ng-click="palette.openVoyager()">
+                <img src="img/graph.svg">
+            </button>
+        </div>
+        <h3 class="PanelHeader-title">
+            {{palette.currentSection.name}}
+
+        </h3>
+    </div>
+
+    <search ng-if="palette.currentSection !== undefined"
+            value="palette.currentSection.search" placeholder="{{ 'Search' | translate }}"></search>
+    <div class="Palette-board">
+        <div palette-widget
+             ng-if="!palette.isDataSection(palette.currentSection)"
+             class="PaletteItem text-center"
+             ng-repeat="widget in palette.currentSection.widgets | filterByComponentName:palette.currentSection.search | orderBy:'component.order'"
+             widget="widget"
+             is-fragment="palette.isFragment()"
+             ng-if="palette.currentSection !== undefined"
+             value="palette.currentSection.search"
+        >
+        </div>
+        <div palette-model
+             ng-if="palette.isDataSection(palette.currentSection)"
+             class="PaletteItem PaletteItem-data text-center"
+             ng-repeat="widget in palette.currentSection.widgets | filterByComponentName:palette.currentSection.search | orderBy:'component.name'"
+             widget="widget"
+             ng-if="palette.currentSection !== undefined"
+             value="palette.currentSection.search"
+        >
+        </div>
+    </div>
+</div>
+

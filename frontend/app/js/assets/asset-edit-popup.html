@@ -1,0 +1,28 @@
+<div class="EditAssetPopUp">
+    <div class="modal-header">
+        <h3 class="modal-title">{{vm.asset.name}}</h3>
+        <save-indicator class="EditAssetPopUp-saveIndicator"></save-indicator>
+    </div>
+    <div class="modal-body">
+        <ace-editor class="EditAssetPopUp-editor"
+                    mode="{{vm.aceMode}}"
+                    ng-model="vm.content"
+                    autofocus>
+        </ace-editor>
+    </div>
+    <div class="modal-footer">
+        <button type="button"
+                class="btn btn-primary"
+                ng-click="vm.save()"
+                ng-disabled="!vm.hasChanged()"
+                uib-tooltip="{{ 'This will also update the content of the preview window' | translate }}"
+                tooltip-popup-delay="500"
+                tooltip-append-to-body="true"
+                translate>Save</button>
+        <button class="btn btn-link EditAssetPopUp-dismissBtn" type="button" ng-click="$dismiss()">
+            <span ng-if="!vm.hasChanged()" translate>Close</span>
+            <span ng-if="vm.hasChanged()" translate>Discard changes</span>
+        </button>
+    </div>
+
+</div>

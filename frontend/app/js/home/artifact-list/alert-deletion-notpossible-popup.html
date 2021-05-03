@@ -1,0 +1,24 @@
+<div id="cannot-delete-popup">
+    <div class="modal-header">
+        <h3 class="modal-title">
+            <span translate>Deletion is not possible</span>
+        </h3>
+    </div>
+    <div class="modal-body">
+        <span translate>The {{ artifact.type }} cannot be deleted because it is used in:</span>
+        <ul>
+            <li ng-repeat="(type, artifacts) in usedBy">
+                <translate translate-n="usedBy[type].length" translate-plural="{{ type }}s">
+                    {{ type }}
+                </translate>
+                :
+                <span style="margin-left: 2px" class="badge break-word" ng-repeat="artifact in artifacts">
+                    {{ artifact.name }}
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="cancel()" translate>Close</button>
+    </div>
+</div>

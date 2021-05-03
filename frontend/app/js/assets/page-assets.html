@@ -1,0 +1,53 @@
+<div class="Toolbar">
+    <div class="Toolbar-action">
+        <button class="btn btn-default btnAsset--create" ng-click="vm.openAssetPopup()" translate>
+            Add a new asset
+        </button>
+        <button class="btn btn-default btn-asset--help" ng-click="vm.openHelp()" title="{{'Open help' | translate}}">
+            <i class="fa fa-question-circle"></i>
+        </button>
+    </div>
+
+    <div class="Toolbar-filter">
+        <label class="checkbox-inline" ng-repeat="(key, filter) in vm.scopeFilter">
+            <input type="checkbox" ng-model="filter.filter">
+            <translate>{{filter.value}}</translate>
+        </label>
+    </div>
+
+    <div>
+        <search value="searchTerm" placeholder="{{ 'Search' | translate }}"></search>
+    </div>
+</div>
+
+<table class="Table AssetTable">
+    <thead>
+    <th class="AssetTable-active" translate>Active</th>
+    <th class="AssetTable-name text-left" translate>Name</th>
+    <th class="AssetTable-source" translate>Source</th>
+    <th class="AssetTable-scope" translate>Scope</th>
+    <th class="AssetTable-actions" translate>&nbsp;</th>
+    <th class="AssetTable-actions">&nbsp;</th>
+    <th class="AssetTable-scrollbar">&nbsp;</th>
+    </thead>
+</table>
+<div class="BottomPanel-scrollableView">
+    <div ng-repeat="(key,type) in vm.types">
+        <asset-section type="type"
+                       id="key"
+                       search-term="searchTerm"
+                       scope-filter="vm.scopeFilter"
+                       assets="vm.getAssetsByTypeForCurrentScope(key)"
+                       assets-count="vm.getNbrOfAssetsByType(key)"
+                       on-delete="vm.delete(asset)"
+                       deactivate-asset="vm.deactivateAsset(asset)"
+                       increment-order-asset="vm.incrementOrderAsset(asset)"
+                       decrement-order-asset="vm.decrementOrderAsset(asset)"
+                       open-asset-edit-popup="vm.openAssetEditPopup(asset)"
+                       open-asset-preview-popup="vm.openAssetPreviewPopup(asset)"
+                       get-asset-url="vm.getAssetUrl(asset)"
+                       is-editable="vm.isEditable(asset)"
+                       is-viewable="vm.isViewable(asset)">
+        </asset-section>
+    </div>
+</div>

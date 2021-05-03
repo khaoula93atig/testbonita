@@ -1,0 +1,226 @@
+@property-panel-min-width: 280px;
+
+.PropertyPanel {
+  padding: 0;
+  max-width: 500px;
+  width: 280px;
+  min-width: @property-panel-min-width;
+  transition: width .3s ease, min-width .3s ease;
+
+  .PropertyPanel-toggle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateX(-90%);
+    font-size: 24px;
+    background-color: @color-palette-item-bg;
+    color: @color-palette-item-text;
+    border: none;
+    box-shadow: none;
+
+    &:before {
+      .fa;
+      content: @fa-var-angle-right;
+      padding: 0 .2em;
+    }
+  }
+
+  &.PropertyPanel--closed {
+    width: 0 !important;
+    min-width: 0;
+
+    .PropertyPanel-toggle:before {
+      content: @fa-var-angle-left;
+    }
+  }
+}
+
+.PropertyPanel-expression {
+  &::placeholder {
+    color: @color-properties-placeholder;
+  }
+}
+
+.PropertyPanel .form-control {
+  transition: none;
+}
+
+.PropertyPanel-popover {
+  background-color: @color-properties-bg;
+  color: @color-properties-text;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+
+  .help-block {
+    color: @color-properties-help;
+  }
+}
+
+.PropertyPanel-inner {
+  height: 100%;
+  min-width: @property-panel-min-width;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+div .PropertyPanel-help-popover.popover {
+  color: @text-color;
+  min-width: 600px;
+  max-height: 90%;
+  display: flex !important;
+  z-index: 100;
+}
+
+.PropertyPanel-help-popover .popover-title {
+  letter-spacing: 2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: .9em;
+}
+
+.PropertyPanel-help-popover .popover-content {
+  overflow: auto;
+  min-width: 590px;
+  height: 100%;
+}
+
+PropertyPanel-help-popover-body {
+  border-top: 1px solid @modal-header-border-color;
+}
+
+.PropertyPanel-widget-action-menu {
+  min-width: 120px;
+}
+
+.PropertyPanel-content {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 1em;
+
+  .row {
+    margin: 5px;
+  }
+}
+
+.PropertyPanel-hint {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 1em;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+.PropertyPanel-PropertyIcon {
+  padding-right: 0.3em;
+}
+
+textarea.PropertyPanel-PropertyInput {
+  resize: vertical;
+  min-height: 6em;
+}
+
+/**
+ * properties toolbar
+ */
+.editor-field-icon-label {
+  display: inline-block;
+  color: @color-properties-help;;
+  padding: 5px;
+}
+
+.property-label label,
+.property-label .help-block {
+  margin: 0;
+}
+
+.property--collapsed:hover{
+  cursor: pointer;
+}
+
+.property--width {
+  width: 90px;
+  display: inline-block;
+}
+
+// inner addon, icon embedded in input
+.inner-addon {
+  position: relative;
+
+  .fa {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+  }
+}
+
+// align inner addon to the left
+.left-addon {
+  .fa {
+    left: 0px;
+    color: @color-properties-bg;
+  }
+
+  input {
+    padding-left: 35px;
+  }
+}
+
+// align inner addon to the right
+.right-addon {
+  .fa {
+    right: 0px;
+  }
+
+  input {
+    padding-right: 35px;
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+// typeahead when linking data
+widget-property-field ul[typeahead-popup] {
+  width: 90%;
+}
+
+.unlinked input, .unlinked select {
+  border: 2px solid @btn-bonita-property-border;
+}
+
+.linked input, .linked select {
+  border: 2px solid @btn-bonita-property-linked-border;
+}
+
+.ContainerProperties-RepeatContentTip {
+  font-size: 85%;
+
+  > ul {
+    padding-left: 2em;
+  }
+}
+
+.rg-left {
+  margin-left: -7px;
+
+  span {
+    display: none;
+  }
+}
+
+.PropertyPanel-help-popover-body .tabs-left {
+  padding: 15px;
+  > .nav-tabs {
+    width: 11em;
+  }
+  .tab-content{
+    padding-left: 20px;
+  }
+}

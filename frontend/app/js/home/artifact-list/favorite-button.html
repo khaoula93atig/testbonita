@@ -1,0 +1,18 @@
+<span ng-switch="vm.isFavorite()">
+    <button ng-switch-when="true"
+            class="Artifact-button Artifact-favoriteButton Artifact-favoriteButton--checked"
+            ng-click="vm.toggleFavorite()"
+            type="button"
+            uib-tooltip="{{:: 'Unmark as favorite' | translate }}"
+            tooltip-popup-delay="500">
+        <i class="fa FavoriteButton-icon"></i>
+    </button>
+    <button ng-switch-default
+            class="Artifact-button Artifact-favoriteButton"
+            ng-click="vm.toggleFavorite()"
+            type="button"
+            uib-tooltip="{{:: 'Mark as favorite' | translate }}"
+            tooltip-popup-delay="500">
+        <i class="fa FavoriteButton-icon"></i>
+    </button>
+</span>

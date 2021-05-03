@@ -1,0 +1,13 @@
+<div class="ImportReport" ng-controller="ImportSuccessMessageController as import">
+    <p><span class="ImportReport-type">{{import.translateKeys(type)}}</span> <strong>{{ element.name }}</strong>
+        <translate>successfully imported.</translate>
+    </p>
+    <section class="ImportReport-added" ng-if="dependencies.added">
+        <translate>Added artifacts</translate>:
+        <import-report-item-list page-name="element.name" type="type" display-page="!overwritten" dependencies="dependencies.added"></import-report-item-list>
+    </section>
+    <section class="ImportReport-overwritten" ng-if="dependencies.overwritten">
+        <translate>Overridden artifacts</translate>:
+        <import-report-item-list page-name="element.name" type="type" display-page="overwritten" dependencies="dependencies.overwritten"></import-report-item-list>
+    </section>
+</div>

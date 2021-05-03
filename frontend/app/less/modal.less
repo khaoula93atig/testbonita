@@ -1,0 +1,17 @@
+.modal-centered > div.modal-dialog {
+  padding-top: 15%;
+}
+
+.modal.in .modal-dialog {
+  transform: none;  /* fix issue with ace editor tooltip */
+}
+
+.modal-dialog.modal-xxl {
+  width: 90vw;
+
+  .ace_editor {
+    height: ~"calc(100vh - 230px)";
+    min-height: 250px;
+  }
+}
+
